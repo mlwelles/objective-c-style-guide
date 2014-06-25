@@ -242,7 +242,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Preferred:**
 
 ```objc
-@interface RWTTutorial : NSObject
+@interface HGTutorial : NSObject
 
 @property (strong, nonatomic) NSString *tutorialName;
 
@@ -252,7 +252,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Not Preferred:**
 
 ```objc
-@interface RWTTutorial : NSObject {
+@interface HGTutorial : NSObject {
   NSString *tutorialName;
 }
 ```
@@ -443,7 +443,7 @@ switch (menuType) {
     case HGLeftMenuTopItemShows:
         // ...
         break;
-    case RWTLeftMenuTopItemSchedule:
+    case HGLeftMenuTopItemSchedule:
         // ...
         break;
 }
@@ -452,7 +452,7 @@ switch (menuType) {
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWTPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `HGPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
 
@@ -560,7 +560,7 @@ Where class constructor methods are used, these should always return type of 'in
 
 ```objc
 @interface Airplane
-+ (instancetype)airplaneWithType:(RWTAirplaneType)type;
++ (instancetype)airplaneWithType:(HGAirplaneType)type;
 @end
 ```
 
