@@ -361,9 +361,9 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 
 ```objc
 typedef NS_ENUM(NSInteger, HGLeftMenuTopItemType) {
-   HGLeftMenuTopItemMain,
-   HGLeftMenuTopItemShows,
-   HGLeftMenuTopItemSchedule
+    HGLeftMenuTopItemMain,
+    HGLeftMenuTopItemShows,
+    HGLeftMenuTopItemSchedule
 };
 ```
 
@@ -397,20 +397,20 @@ When a case contains more than one line, braces should be added.
 
 ```objc
 switch (condition) {
-  case 1:
-    // ...
-    break;
-  case 2: {
-    // ...
-    // Multi-line example using braces
-    break;
-  }
-  case 3:
-    // ...
-    break;
-  default: 
-    // ...
-    break;
+    case 1:
+      // ...
+      break;
+    case 2: {
+      // ...
+      // Multi-line example using braces
+      break;
+    }
+    case 3:
+      // ...
+      break;
+    default: 
+      // ...
+      break;
 }
 
 ```
@@ -419,14 +419,14 @@ There are times when the same code can be used for multiple cases, and a fall-th
 
 ```objc
 switch (condition) {
-  case 1:
-      // ** fall-through! **
-  case 2:
-      // code executed for values 1 and 2
-      break;
-  default: 
-      // ...
-      break;
+    case 1:
+        // ** fall-through! **
+    case 2:
+        // code executed for values 1 and 2
+        break;
+    default: 
+        // ...
+        break;
 }
 
 ```
@@ -502,14 +502,14 @@ Conditional bodies should always use braces even when a conditional body could b
 **Preferred:**
 ```objc
 if (!error) {
-  return success;
+    return success;
 }
 ```
 
 **Not Preferred:**
 ```objc
 if (!error)
-  return success;
+    return success;
 ```
 
 or
