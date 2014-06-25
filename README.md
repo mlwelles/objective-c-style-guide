@@ -1,18 +1,18 @@
-# The official raywenderlich.com Objective-C style guide.
+# The Huge Objective-C style guide.
 
-This style guide outlines the coding conventions for raywenderlich.com.
+This style guide outlines the objective-C coding conventions used by Huge, Inc
 
 ## Introduction
 
-The reason we made this style guide was so that we could keep the code in our books, tutorials, and starter kits nice and consistent - even though we have many different authors working on the books.
+The reason we made this style guide was so that we could keep the code in our projects consistent - and to have a starting point for standards when discussing what per-project exceptions to these conventions we will make for a given  client. 
 
-This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
+This style guide is based on the official raywenderlich.com style guide.  Changes were made to take the focus less on code for print output and more for code that follows best practices in a production environment. 
 
 ## Credits
 
-The creation of this style guide was a collaborative effort from various raywenderlich.com team members under the direction of Nicholas Waynik.  The team includes: [Soheil Moayedi Azarpour](https://github.com/moayes), [Ricardo Rendon Cepeda](https://github.com/ricardo-rendoncepeda), [Tony Dahbura](https://github.com/tdahbura), [Colin Eberhardt](https://github.com/ColinEberhardt), [Matt Galloway](https://github.com/mattjgalloway), [Greg Heo](https://github.com/gregheo), [Matthijs Hollemans](https://github.com/hollance), [Christopher LaPollo](https://github.com/elephantronic), [Saul Mora](https://github.com/casademora), [Andy Pereira](https://github.com/macandyp), [Mic Pringle](https://github.com/micpringle), [Pietro Rea](https://github.com/pietrorea), [Cesare Rocchi](https://github.com/funkyboy), [Marin Todorov](https://github.com/icanzilb), [Nicholas Waynik](https://github.com/ndubbs), and [Ray Wenderlich](https://github.com/raywenderlich)
+This style guide is largely an intact fork of the [raywenderlich.com style guide](https://github.com/raywenderlich/objective-c-style-guide) 
 
-We would like to thank the creators of the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [Robots & Pencils'](https://github.com/RobotsAndPencils/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
+Which, in turn was influenced by the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [Robots & Pencils'](https://github.com/RobotsAndPencils/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
 
 ## Background
 
@@ -115,15 +115,15 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 ## Spacing
 
-* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
+* Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 **Preferred:**
 ```objc
 if (user.isHappy) {
-  //Do something
+    //Do something
 } else {
-  //Do something else
+    //Do something else
 }
 ```
 
@@ -134,37 +134,15 @@ if (user.isHappy)
     //Do something
 }
 else {
-    //Do something else
+  //Do something else
 }
 ```
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
 * Prefer using auto-synthesis. But if necessary, `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
-* Colon-aligning method invocation should often be avoided.  There are cases where a method signature may have >= 3 colons and colon-aligning makes the code more readable. Please do **NOT** however colon align methods containing blocks because Xcode's indenting makes it illegible.
+* Colon-aligning method invocation is not required.  There are cases where  colon-aligning makes the code more readable, any cases where it does not. Err always on the side of readability.  Use best judgment. 
 
-**Preferred:**
 
-```objc
-// blocks are easily readable
-[UIView animateWithDuration:1.0 animations:^{
-  // something
-} completion:^(BOOL finished) {
-  // something
-}];
-```
-
-**Not Preferred:**
-
-```objc
-// colon-aligning makes the block indentation hard to read
-[UIView animateWithDuration:1.0
-                 animations:^{
-                     // something
-                 }
-                 completion:^(BOOL finished) {
-                     // something
-                 }];
-```
 
 ## Comments
 
@@ -190,14 +168,14 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official raywenderlich.com books, starter kits, or tutorials, the prefix 'RWT' should be used.
+A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any office Huge, inc. source 'HG' should be used.  For client work, an appropriate prefix approved by the the client should be used. 
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
 **Preferred:**
 
 ```objc
-static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
+static NSTimeInterval const HGExampleViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not Preferred:**
@@ -254,7 +232,7 @@ The usage of the word "and" is reserved.  It should not be used for multiple par
 
 ## Variables
 
-Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops.
+Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops, and even then with the caveat that not much is gained by using "i" when "index" is much more readable.   Particularly in cases of nested loops, where instead of using nested single letter identifiers like "i" "j" "n", instead using variable names that indicate the level of the nested scope they represent. 
 
 Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constants.
 
@@ -363,15 +341,15 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static NSString * const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
+static NSString * const HGAboutViewControllerCompanyName = @"Huge, Inc.";
 
-static CGFloat const RWTImageThumbnailHeight = 50.0;
+static CGFloat const HGImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
 
 ```objc
-#define CompanyName @"RayWenderlich.com"
+#define CompanyName @"Huge, Inc."
 
 #define thumbnailHeight 2
 ```
@@ -383,21 +361,21 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
-  RWTLeftMenuTopItemMain,
-  RWTLeftMenuTopItemShows,
-  RWTLeftMenuTopItemSchedule
+typedef NS_ENUM(NSInteger, HGLeftMenuTopItemType) {
+   HGLeftMenuTopItemMain,
+   HGLeftMenuTopItemShows,
+   HGLeftMenuTopItemSchedule
 };
 ```
 
 You can also make explicit value assignments (showing older k-style constant definition):
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
-  RWTPinSizeMin = 1,
-  RWTPinSizeMax = 5,
-  RWTPinCountMin = 100,
-  RWTPinCountMax = 500,
+typedef NS_ENUM(NSInteger, HGGlobalConstants) {
+    HGPinSizeMin = 1,
+    HGPinSizeMax = 5,
+    HGPinCountMin = 100,
+    HGPinCountMax = 500,
 };
 ```
 
@@ -407,8 +385,8 @@ Older k-style constant definitions should be **avoided** unless writing CoreFoun
 
 ```objc
 enum GlobalConstants {
-  kMaxPinSize = 5,
-  kMaxPinCount = 500,
+    kMaxPinSize = 5,
+    kMaxPinCount = 500,
 };
 ```
 
@@ -443,13 +421,13 @@ There are times when the same code can be used for multiple cases, and a fall-th
 ```objc
 switch (condition) {
   case 1:
-    // ** fall-through! **
+      // ** fall-through! **
   case 2:
-    // code executed for values 1 and 2
-    break;
+      // code executed for values 1 and 2
+      break;
   default: 
-    // ...
-    break;
+      // ...
+      break;
 }
 
 ```
@@ -457,18 +435,18 @@ switch (condition) {
 When using an enumerated type for a switch, 'default' is not needed.   For example:
 
 ```objc
-RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
+HGLeftMenuTopItemType menuType = HGLeftMenuTopItemMain;
 
 switch (menuType) {
-  case RWTLeftMenuTopItemMain:
-    // ...
-    break;
-  case RWTLeftMenuTopItemShows:
-    // ...
-    break;
-  case RWTLeftMenuTopItemSchedule:
-    // ...
-    break;
+    case HGLeftMenuTopItemMain:
+        // ...
+        break;
+    case HGLeftMenuTopItemShows:
+        // ...
+        break;
+    case RWTLeftMenuTopItemSchedule:
+        // ...
+        break;
 }
 ```
 
@@ -480,7 +458,7 @@ Private properties should be declared in class extensions (anonymous categories)
 **For Example:**
 
 ```objc
-@interface RWTDetailViewController ()
+@interface HGDetailViewController ()
 
 @property (strong, nonatomic) GADBannerView *googleAdView;
 @property (strong, nonatomic) ADBannerView *iAdView;
@@ -627,11 +605,11 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 ```objc
 - (void)someMethod {
-  if (![someOther boolValue]) {
-	return;
-  }
+    if (![someOther boolValue]) {
+	    return;
+    }
 
-  //Do something important
+    //Do something important
 }
 ```
 
@@ -639,9 +617,9 @@ When coding with conditionals, the left hand margin of the code should be the "g
 
 ```objc
 - (void)someMethod {
-  if ([someOther boolValue]) {
-    //Do something important
-  }
+    if ([someOther boolValue]) {
+      //Do something important
+    }
 }
 ```
 
@@ -653,7 +631,7 @@ When methods return an error parameter by reference, switch on the returned valu
 ```objc
 NSError *error;
 if (![self trySomethingWithError:&error]) {
-  // Handle Error
+    // Handle Error
 }
 ```
 
@@ -662,7 +640,7 @@ if (![self trySomethingWithError:&error]) {
 NSError *error;
 [self trySomethingWithError:&error];
 if (error) {
-  // Handle Error
+    // Handle Error
 }
 ```
 
@@ -674,14 +652,14 @@ Some of Apple’s APIs write garbage values to the error parameter (if non-NULL)
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
 + (instancetype)sharedInstance {
-  static id sharedInstance = nil;
+    static id sharedInstance = nil;
 
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    sharedInstance = [[self alloc] init];
-  });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+      sharedInstance = [[self alloc] init];
+    });
 
-  return sharedInstance;
+    return sharedInstance;
 }
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
@@ -689,32 +667,16 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Line Breaks
 
-Line breaks are an important topic since this style guide is focused for print and online readability.
+This style guide is focused for readability inside an IDE.  Line breaks generally should then generally be focussed on colon aligned method arguments. 
 
-For example:
 ```objc
-self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
-```
-A long line of code like this should be carried on to the second line adhering to this style guide's Spacing section (two spaces).
-```objc
-self.productsRequest = [[SKProductsRequest alloc] 
-  initWithProductIdentifiers:productIdentifiers];
+self.priceRequest = [[SKPriceRequest alloc] initWithProducts:products
+                                                     coupons:coupons
+                                                     options:options];
 ```
 
+Lines that pass a ~160 character margin are good candidates for being broken into multiples, but adding newlines to simply replicate the same presentation that auto-wrapping would provide is not encouraged.  It won't add any value.
 
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.  The end square bracket is used because it represents the largest smile able to be captured using ascii art.  A half-hearted smile is represented if an end parenthesis is used, and thus not preferred.
-
-**Preferred:**
-```objc
-:]
-```
-
-**Not Preferred:**
-```objc
-:)
-```  
 
 
 ## Xcode project
