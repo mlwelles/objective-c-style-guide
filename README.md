@@ -6,13 +6,12 @@ This style guide outlines the objective-C coding conventions used by Huge, Inc
 
 The reason we made this style guide was so that we could keep the code in our projects consistent - and to have a starting point for standards when discussing what per-project exceptions to these conventions we will make for a given  client. 
 
-This style guide is based on the official raywenderlich.com style guide.  Changes were made to take the focus less on code for print output and more for code that follows best practices in a production environment. 
+Changes were made to take the focus less on code for print output and more for code that follows best practices in a production environment. 
 
 ## Credits
 
-This style guide is largely an intact fork of the [raywenderlich.com style guide](https://github.com/raywenderlich/objective-c-style-guide) 
+This style guide is largely an intact fork of the [raywenderlich.com style guide](https://github.com/raywenderlich/objective-c-style-guide), which was influenced by the  [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [Robots & Pencils'](https://github.com/RobotsAndPencils/objective-c-style-guide) Objective-C Style Guides.   Changes from the raywendlich.com original were made to change the focus from print output to code thats most readable inside an IDE. 
 
-Which, in turn was influenced by the [New York Times](https://github.com/NYTimes/objective-c-style-guide) and [Robots & Pencils'](https://github.com/RobotsAndPencils/objective-c-style-guide) Objective-C Style Guides.  These two style guides provided a solid starting point for this guide to be created and based upon.
 
 ## Background
 
